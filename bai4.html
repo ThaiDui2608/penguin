@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="bai4.css" />
+    <title>SIGN UP</title>
+  </head>
+  <body>
+    <form name="myForm" id="myForm">
+      <!-- <label for="username">Username</label> -->
+      <input type="text" id="username" placeholder="Username" required />
+
+      <!-- <label for="email">Email</label> -->
+      <input type="email" id="email" placeholder="Email" required />
+
+      <!-- <label for="password">Password</label> -->
+      <input
+        type="password"
+        id="password"
+        placeholder="Password"
+        onclick="checkUsername"
+      />
+      <!-- <label for="confirm-password">Confirm Password</label> -->
+      <input
+        type="password"
+        id="confirm-password"
+        placeholder="Confirm password here"
+        required
+      />
+      <p id="message"></p>
+      <input type="button" onclick="validateForm()" value="SUBMIT" />
+    </form>
+  </body>
+
+  <script>
+    function validateForm() {
+      var username = document.getElementById("username").value;
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var confirm = document.getElementById("confirm-password").value;
+
+      if (username.length == 0) {
+        alert("Không được để trống");
+        return false;
+      } else if (username.length < 10) {
+        alert("Họ tên phải có ít nhất 10 kí tự");
+        return false;
+      }
+
+      if (email.length == 0) {
+        alert("Bạn phải điền địa chỉ email");
+        return false;
+      }
+
+      if (password.length == 0) {
+        alert("Bạn chưa nhập mật khẩu");
+        return false;
+      } else if (password.length < 6) {
+        alert("Mật khẩu phải có ít nhất 6 kí tự");
+        return false;
+      }
+
+      if (confirm.length == 0) {
+        alert("Bạn chưa xác nhận mật khẩu");
+        return false;
+      } else if (confirm != password) {
+        alert("Mật khẩu không trùng khớp");
+        return false;
+      } else {
+        document.getElementById("myForm").submit();
+        alert("Đăng kí thành công");
+      }
+    }
+  </script>
+</html>
